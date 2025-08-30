@@ -11,8 +11,7 @@ export default function RequestForm() {
     e.preventDefault();
     const { data, error } = await supabase
       .from("requests")
-      .insert([{ name, subject, message }])
-      .select();
+      .insert([{ name, subject, message }]);
 
     if (error) {
       console.error(error);
@@ -69,7 +68,8 @@ export default function RequestForm() {
       <ul style={{ marginTop: 20 }}>
         {requests.map((r) => (
           <li key={r.id}>
-            <strong>{r.subject}</strong> from {r.name} - {r.message}
+            <strong>{r.subject}</strong> from {r.name} - {r.message} - {"  "}
+            {r.created_at}
           </li>
         ))}
       </ul>
